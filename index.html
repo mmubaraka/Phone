@@ -3,186 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mubaraka | Электроника и Рассрочка</title>
+    <title>Mubaraka | Premium Electronics & Installment</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-        /* ПРЕМИАЛЬНЫЙ MINIMAL (Стиль Apple, Светлые тона, Изумруд Mubaraka) */
+        /* ПРЕМИАЛЬНЫЙ ТЕМНЫЙ МИНИМАЛИЗМ (Стиль Apple Dark, Midnight & Emerald) */
         :root {
-            --primary: #059669; 
-            --primary-hover: #047857;
-            --primary-light: rgba(5, 150, 105, 0.08);
-            --bg-body: #f5f5f7; 
-            --bg-card: #ffffff;
-            --text-main: #1d1d1f;
-            --text-muted: #86868b;
-            --border: #d2d2d7;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-            --shadow-md: 0 16px 32px rgba(0,0,0,0.08);
+            --primary: #10b981; 
+            --primary-hover: #059669;
+            --primary-light: rgba(16, 185, 129, 0.1);
+            --bg-body: #090d16; 
+            --bg-card: #111827;
+            --bg-input: #1f2937;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 20px 40px rgba(0, 0, 0, 0.4);
             --radius-lg: 24px;
             --radius-md: 16px;
-            --danger: #ff3b30;
-            --danger-light: #ffe5e5;
-            --success: #34c759;
-            --track-bg: #e5e5ea;
+            --danger: #ef4444;
+            --danger-light: rgba(239, 68, 68, 0.15);
+            --success: #10b981;
+            --track-bg: #374151;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-tap-highlight-color: transparent; }
         body { background-color: var(--bg-body); color: var(--text-main); padding-bottom: 120px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-        /* Анимации и плавность */
         .hidden { display: none !important; }
-        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ШАПКА GLASSMORPHISM */
+        /* ШАПКА ULTRA-GLASS */
         header {
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100;
+            background: rgba(17, 24, 39, 0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;
         }
         .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; transition: transform 0.2s; }
         .logo:active { transform: scale(0.96); }
         .logo-icon {
-            background: var(--primary); color: white; width: 42px; height: 42px; 
+            background: linear-gradient(135deg, var(--primary) 0%, #059669 100%); color: white; width: 42px; height: 42px; 
             display: flex; align-items: center; justify-content: center; border-radius: 12px; 
-            font-weight: 900; font-size: 20px; box-shadow: 0 4px 10px rgba(5,150,105,0.25);
+            font-weight: 900; font-size: 20px; box-shadow: 0 4px 14px rgba(16,185,129,0.3);
         }
-        .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; line-height: 1.1; color: #1d1d1f; }
+        .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; line-height: 1.1; color: var(--text-main); }
         .logo-sub { font-size: 11px; color: var(--primary); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
 
-        /* КАТАЛОГ И ПОИСК */
-        .search-container { padding: 20px 20px 0; max-width: 1200px; margin: 0 auto; }
+        /* ИНТЕРФЕЙС КАТАЛОГА */
+        .search-container { padding: 24px 20px 0; max-width: 1200px; margin: 0 auto; }
         .search-input {
-            width: 100%; padding: 16px 20px; border-radius: 18px; border: 1px solid transparent;
-            font-size: 16px; font-weight: 500; background: #e5e5ea; outline: none; transition: all 0.3s;
+            width: 100%; padding: 18px 22px; border-radius: 18px; border: 1px solid var(--border);
+            font-size: 16px; font-weight: 500; background: var(--bg-card); color: var(--text-main); outline: none; transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
         }
-        .search-input:focus { background: var(--bg-card); border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-light); }
+        .search-input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-light); background: #1f2937; }
         
         .category-scroll {
-            display: flex; overflow-x: auto; gap: 10px; padding: 20px; scrollbar-width: none; max-width: 1200px; margin: 0 auto;
+            display: flex; overflow-x: auto; gap: 12px; padding: 20px; scrollbar-width: none; max-width: 1200px; margin: 0 auto;
         }
         .category-scroll::-webkit-scrollbar { display: none; }
         .cat-btn {
-            background: var(--bg-card); border: 1px solid var(--border); padding: 10px 20px; border-radius: 20px; 
-            font-size: 14px; font-weight: 600; white-space: nowrap; cursor: pointer; color: var(--text-muted); transition: 0.3s;
+            background: var(--bg-card); border: 1px solid var(--border); padding: 12px 22px; border-radius: 24px; 
+            font-size: 14px; font-weight: 600; white-space: nowrap; cursor: pointer; color: var(--text-muted); transition: all 0.2s;
         }
-        .cat-btn.active { background: var(--text-main); color: white; border-color: var(--text-main); }
+        .cat-btn.active { background: var(--text-main); color: var(--bg-body); border-color: var(--text-main); font-weight: 700; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; padding: 0 20px 20px; max-width: 1200px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 20px; padding: 0 20px 24px; max-width: 1200px; margin: 0 auto; }
         .product-card {
-            background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid transparent;
-            overflow: hidden; box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            display: flex; flex-direction: column;
+            background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border);
+            overflow: hidden; box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex; flex-direction: column; position: relative;
         }
-        .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+        .product-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-4px); box-shadow: var(--shadow-md); }
         .product-card:active { transform: scale(0.97); }
-        .product-img-wrap { width: 100%; aspect-ratio: 1; background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        .product-img-wrap { width: 100%; aspect-ratio: 1; background: linear-gradient(to bottom, #111827, #1f2937); display: flex; align-items: center; justify-content: center; padding: 24px; }
         .product-img-wrap img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s; }
-        .product-card:hover .product-img-wrap img { transform: scale(1.05); }
-        .product-info { padding: 16px; display: flex; flex-direction: column; flex-grow: 1; background: #fbfbfd; border-top: 1px solid rgba(0,0,0,0.03); }
-        .product-title { font-size: 15px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; line-height: 1.3; }
-        .product-price { font-size: 17px; font-weight: 800; color: var(--text-main); margin-top: auto; }
+        .product-card:hover .product-img-wrap img { transform: scale(1.06); }
+        .product-info { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; line-height: 1.3; }
+        .product-price { font-size: 18px; font-weight: 800; color: var(--primary); margin-top: auto; }
 
-        /* КАРТОЧКА ТОВАРА */
-        .view-product { max-width: 700px; margin: 0 auto; padding: 0; background: var(--bg-body); min-height: 100vh; }
+        /* ПРОСМОТР ТОВАРА */
+        .view-product { max-width: 750px; margin: 0 auto; padding: 0; background: var(--bg-body); min-height: 100vh; }
         .nav-back { 
-            padding: 16px 20px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 8px; 
-            cursor: pointer; background: rgba(245, 245, 247, 0.8); backdrop-filter: blur(10px); position: sticky; top: 71px; z-index: 90; 
+            padding: 18px 20px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 8px; 
+            cursor: pointer; background: rgba(9, 13, 22, 0.8); backdrop-filter: blur(10px); position: sticky; top: 75px; z-index: 90; border-bottom: 1px solid var(--border);
         }
         
-        .prod-hero { background: var(--bg-card); padding: 40px 20px; display: flex; justify-content: center; border-radius: 0 0 32px 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
-        .prod-hero img { height: 300px; width: 100%; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.08)); transition: opacity 0.3s; }
+        .prod-hero { background: var(--bg-card); padding: 50px 20px; display: flex; justify-content: center; border-bottom: 1px solid var(--border); position: relative; }
+        .prod-hero img { height: 320px; width: 100%; object-fit: contain; filter: drop-shadow(0 25px 35px rgba(0,0,0,0.5)); transition: opacity 0.3s; }
         
         .prod-details { padding: 30px 20px; }
-        .prod-header-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; letter-spacing: -0.5px; }
-        .prod-header-price { font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 30px; }
+        .prod-header-title { font-size: 30px; font-weight: 800; margin-bottom: 10px; line-height: 1.2; letter-spacing: -0.6px; }
+        .prod-header-price { font-size: 26px; font-weight: 800; color: var(--primary); margin-bottom: 32px; }
 
-        .selector-group { margin-bottom: 28px; }
-        .selector-label { font-size: 15px; font-weight: 700; color: var(--text-main); margin-bottom: 14px; display: flex; justify-content: space-between; }
+        .selector-group { margin-bottom: 30px; }
+        .selector-label { font-size: 15px; font-weight: 700; color: var(--text-muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        .color-options { display: flex; gap: 14px; flex-wrap: wrap; }
+        .color-options { display: flex; gap: 16px; flex-wrap: wrap; }
         .color-bubble {
-            width: 44px; height: 44px; border-radius: 50%; border: 2px solid transparent; cursor: pointer;
-            padding: 3px; display: flex; align-items: center; justify-content: center; transition: 0.2s;
+            width: 46px; height: 44px; border-radius: 50%; border: 2px solid transparent; cursor: pointer;
+            padding: 4px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;
         }
-        .color-bubble.active { border-color: var(--primary); transform: scale(1.1); }
-        .color-bubble-inner { width: 100%; height: 100%; border-radius: 50%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); }
+        .color-bubble.active { border-color: var(--primary); transform: scale(1.12); }
+        .color-bubble-inner { width: 100%; height: 100%; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); }
         
         .pill-options { display: flex; gap: 12px; flex-wrap: wrap; }
         .pill-btn {
-            background: var(--bg-card); border: 1px solid var(--border); padding: 14px 20px; border-radius: 14px;
-            font-size: 15px; font-weight: 600; color: var(--text-main); cursor: pointer; transition: all 0.2s; flex-grow: 1; text-align: center;
+            background: var(--bg-card); border: 1px solid var(--border); padding: 16px 22px; border-radius: 16px;
+            font-size: 15px; font-weight: 700; color: var(--text-main); cursor: pointer; transition: all 0.2s; flex-grow: 1; text-align: center;
         }
-        .pill-btn.active { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+        .pill-btn.active { background: var(--primary-light); border-color: var(--primary); color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
 
-        /* КАЛЬКУЛЯТОР */
-        .calc-wrapper { background: var(--bg-card); padding: 28px; border-radius: 24px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
-        .calc-title { font-size: 18px; font-weight: 800; display: flex; align-items: center; gap: 10px; margin-bottom: 24px; letter-spacing: -0.3px; }
+        /* ИНТЕГРИРОВАННЫЙ СЛАЙДЕРНЫЙ КАЛЬКУЛЯТОР */
+        .calc-wrapper { background: var(--bg-card); padding: 32px; border-radius: 28px; margin-bottom: 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+        .calc-title { font-size: 19px; font-weight: 800; display: flex; align-items: center; gap: 10px; margin-bottom: 26px; letter-spacing: -0.3px; color: var(--text-main); }
         
-        .label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 24px; }
-        .label-row label { font-weight: 600; font-size: 14px; color: var(--text-muted); }
-        .val-badge { font-weight: 800; font-size: 16px; color: var(--text-main); font-variant-numeric: tabular-nums; }
+        .label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; margin-top: 26px; }
+        .label-row label { font-weight: 600; font-size: 15px; color: var(--text-muted); }
+        .val-badge { font-weight: 800; font-size: 17px; color: var(--primary); font-variant-numeric: tabular-nums; }
         
-        .price-input-wrapper { display: flex; align-items: center; background: var(--bg-body); border: 2px solid transparent; border-radius: 16px; padding: 16px; transition: 0.3s; }
-        .price-input-wrapper:focus-within { border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 4px var(--primary-light); }
+        .price-input-wrapper { display: flex; align-items: center; background: var(--bg-input); border: 2px solid transparent; border-radius: 16px; padding: 16px; transition: 0.3s; }
+        .price-input-wrapper:focus-within { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-light); background: var(--bg-card); }
         .price-input-wrapper input { width: 100%; border: none; background: transparent; font-size: 22px; font-weight: 800; color: var(--text-main); outline: none; }
         
-        input[type="range"] { -webkit-appearance: none; width: 100%; height: 8px; background: var(--track-bg); border-radius: 8px; outline: none; margin: 16px 0 8px; }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 3px solid var(--primary); cursor: pointer; box-shadow: 0 4px 12px rgba(5,150,105,0.25); transition: 0.2s; }
-        input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.1); }
+        input[type="range"] { -webkit-appearance: none; width: 100%; height: 8px; background: var(--track-bg); border-radius: 8px; outline: none; margin: 18px 0 8px; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 28px; height: 28px; border-radius: 50%; background: #fff; border: 4px solid var(--primary); cursor: pointer; box-shadow: 0 4px 14px rgba(16,185,129,0.4); transition: 0.2s; }
         
-        .limits-text { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 4px; }
+        .limits-text { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 6px; }
+        .info-text { color: #38bdf8; background: rgba(14, 165, 233, 0.15); padding: 16px; border-radius: 14px; font-size: 14px; font-weight: 600; margin-top: 14px; display: none; line-height: 1.5; border: 1px solid rgba(14, 165, 233, 0.1); }
+        .info-text.warning { color: var(--danger); background: var(--danger-light); display: block; border-color: rgba(239, 68, 68, 0.2); }
 
-        .info-text { color: #0284c7; background: #f0f9ff; padding: 14px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-top: 12px; display: none; line-height: 1.5; }
-        .info-text.warning { color: var(--danger); background: var(--danger-light); display: block; }
-
-        .result-block { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+        .result-block { margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--border); }
         .res-row { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 15px; font-weight: 500; color: var(--text-muted); }
         .res-row .val { color: var(--text-main); font-weight: 700; font-variant-numeric: tabular-nums; }
-        .res-total { font-size: 22px; font-weight: 800; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--border); }
+        .res-total { font-size: 24px; font-weight: 900; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; margin-top: 24px; padding-top: 24px; border-top: 1px dashed var(--border); }
 
         /* ФОРМА ЗАКАЗА И ДОСТАВКА */
-        .order-form { padding: 24px; background: var(--bg-card); border-radius: 24px; margin-bottom: 120px; box-shadow: var(--shadow-sm); }
-        .delivery-toggle { display: flex; align-items: center; gap: 14px; font-size: 16px; font-weight: 600; cursor: pointer; padding: 18px; background: var(--bg-body); border-radius: 16px; border: 2px solid transparent; transition: 0.3s; }
+        .order-form { padding: 26px; background: var(--bg-card); border-radius: 28px; margin-bottom: 120px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+        .delivery-toggle { display: flex; align-items: center; gap: 14px; font-size: 16px; font-weight: 700; cursor: pointer; padding: 18px; background: var(--bg-input); border-radius: 16px; border: 2px solid transparent; transition: all 0.3s; }
         .delivery-toggle.active { border-color: var(--primary); background: var(--primary-light); color: var(--primary); }
         .delivery-toggle input { width: 22px; height: 22px; accent-color: var(--primary); }
-        .address-input { width: 100%; padding: 18px; border: 2px solid var(--border); border-radius: 16px; font-size: 16px; font-weight: 500; margin-top: 16px; outline: none; display: none; background: var(--bg-body); transition: 0.3s; }
-        .address-input:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px var(--primary-light); }
+        .address-input { width: 100%; padding: 18px; border: 2px solid var(--border); border-radius: 16px; font-size: 16px; font-weight: 500; margin-top: 16px; outline: none; display: none; background: var(--bg-input); color: white; transition: 0.3s; }
+        .address-input:focus { border-color: var(--primary); background: var(--bg-card); }
 
-        .bottom-action-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 16px 20px 24px; border-top: 1px solid rgba(0,0,0,0.05); z-index: 100; display: flex; justify-content: center; }
-        .btn-main { background: var(--primary); color: white; border: none; padding: 18px; border-radius: 18px; font-size: 17px; font-weight: 700; cursor: pointer; transition: all 0.3s; width: 100%; max-width: 700px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .bottom-action-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 20px; border-top: 1px solid var(--border); z-index: 100; display: flex; justify-content: center; }
+        .btn-main { background: var(--primary); color: #090d16; border: none; padding: 18px; border-radius: 18px; font-size: 17px; font-weight: 800; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); width: 100%; max-width: 750px; display: flex; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 8px 24px rgba(16,185,129,0.25); }
         .btn-main:active { transform: scale(0.97); }
 
-        /* АДМИН ПАНЕЛЬ */
+        /* ИНТЕРФЕЙС АДМИНИСТРАТОРА */
         .admin-wrap { display: none; max-width: 1000px; margin: 20px auto; padding: 0 15px; }
         .admin-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-        .btn-reset { background: #fff; color: var(--text-muted); border: 1px solid var(--border); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; box-shadow: var(--shadow-sm); }
-        .btn-reset:hover { border-color: var(--danger); color: var(--danger); }
-        
-        .dashboard-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
-        .stat-card { background: var(--bg-card); padding: 24px; border-radius: 20px; box-shadow: var(--shadow-sm); }
+        .dashboard-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .stat-card { background: var(--bg-card); padding: 24px; border-radius: 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
         .stat-title { font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
         .stat-value { font-size: 32px; font-weight: 800; color: var(--text-main); margin-top: 8px; letter-spacing: -1px; }
 
         .admin-tabs { display: flex; gap: 12px; margin-bottom: 24px; overflow-x: auto; scrollbar-width: none; padding-bottom: 5px; }
         .admin-tab { padding: 14px 24px; font-size: 15px; font-weight: 600; border: none; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; border-radius: 16px; white-space: nowrap; transition: 0.3s; }
-        .admin-tab.active { background: var(--text-main); color: white; border-color: var(--text-main); }
+        .admin-tab.active { background: var(--text-main); color: var(--bg-body); border-color: var(--text-main); font-weight: 700; }
         
-        .admin-section { display: none; background: var(--bg-card); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-sm); }
+        .admin-section { display: none; background: var(--bg-card); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
         .admin-section.active { display: block; animation: fadeIn 0.4s; }
 
-        .order-card { border: 1px solid var(--border); border-radius: 20px; padding: 24px; margin-bottom: 16px; background: #fff; }
+        .order-card { border: 1px solid var(--border); border-radius: 20px; padding: 24px; margin-bottom: 16px; background: #1f2937; }
         .order-header { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 16px; }
         
         .input-group { margin-bottom: 20px; }
         .input-group label { display: block; font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
-        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 16px; border: 1px solid var(--border); border-radius: 14px; font-size: 15px; background: var(--bg-body); outline: none; font-weight: 500; transition: 0.3s; }
-        .input-group input:focus, .input-group textarea:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px var(--primary-light); }
+        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 16px; border: 1px solid var(--border); border-radius: 14px; font-size: 15px; background: var(--bg-input); color: white; outline: none; font-weight: 500; transition: 0.3s; }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--primary); background: var(--bg-card); }
         
-        .dynamic-list { border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 20px; background: #fafafa; }
+        .dynamic-list { border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 20px; background: rgba(0,0,0,0.2); }
         .dynamic-row { display: flex; gap: 12px; margin-bottom: 12px; align-items: center; }
-        .dynamic-row input { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid var(--border); outline:none; }
+        .dynamic-row input { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-input); color: white; outline:none; }
         .btn-del-row { background: var(--danger-light); color: var(--danger); border: none; width: 44px; height: 44px; border-radius: 10px; cursor: pointer; font-weight: bold; }
         .btn-add-row { background: transparent; border: 2px dashed var(--border); color: var(--text-muted); padding: 14px; width: 100%; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; }
         .btn-add-row:hover { border-color: var(--primary); color: var(--primary); }
@@ -190,55 +186,49 @@
         .table-wrap { overflow-x: auto; margin-top: 20px; }
         table { width: 100%; border-collapse: collapse; min-width: 600px; }
         th, td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 15px; }
-        th { background: var(--bg-body); font-weight: 600; color: var(--text-muted); }
+        th { background: var(--bg-input); font-weight: 600; color: var(--text-muted); }
         .btn-outline { background: transparent; border: 1px solid var(--border); padding: 10px 16px; border-radius: 12px; font-weight: 600; cursor: pointer; color: var(--text-main); transition: 0.2s; }
-        .btn-outline:hover { border-color: var(--text-main); }
 
-        /* МОДАЛКИ */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 200; opacity: 0; pointer-events: none; transition: 0.4s; padding: 20px; }
+        /* ОКНА МОДАЛЬНЫЕ */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 200; opacity: 0; pointer-events: none; transition: 0.4s; padding: 20px; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-card { background: var(--bg-card); padding: 32px; border-radius: 32px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-md); transform: translateY(30px); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .modal-card { background: var(--bg-card); padding: 32px; border-radius: 32px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-md); border: 1px solid var(--border); transform: translateY(30px); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .modal-overlay.active .modal-card { transform: translateY(0); }
         
-        .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: rgba(29, 29, 31, 0.95); backdrop-filter: blur(10px); color: white; padding: 16px 32px; border-radius: 30px; font-size: 15px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 1000; transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .toast.show { transform: translateX(-50%) translateY(0); }
-
+        /* ЧАТ */
+        .chat-box { height: 250px; overflow-y: auto; border: 1px solid var(--border); border-radius: 14px; padding: 14px; background: rgba(0,0,0,0.2); margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px; }
+        .chat-msg { max-width: 80%; padding: 10px 14px; border-radius: 14px; font-size: 14px; font-weight: 500; word-break: break-word; }
+        .chat-msg.client { background: var(--bg-input); align-self: flex-start; color: var(--text-main); }
+        .chat-msg.admin { background: var(--primary-light); border: 1px solid var(--primary); align-self: flex-end; color: var(--primary); }
     </style>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 </head>
 <body>
 
     <div id="toast" class="toast">Уведомление</div>
 
-    <!-- ШАПКА -->
     <header>
         <div class="logo" onclick="handleLogoClick()">
             <div class="logo-icon">M</div>
             <div class="logo-text-wrapper">
                 <div class="logo-text">Mubaraka</div>
-                <div class="logo-sub">Электроника</div>
+                <div class="logo-sub">Electronics</div>
             </div>
         </div>
-        <div id="admin-badge" style="display:none; font-size:12px; background:var(--text-main); color:white; padding:6px 12px; border-radius:8px; font-weight:800;">АДМИН</div>
+        <div id="admin-badge" style="display:none; font-size:12px; background:var(--primary); color:#090d16; padding:6px 12px; border-radius:8px; font-weight:900;">PRO РЕЖИМ</div>
     </header>
 
-    <!-- 1. КАТАЛОГ (ГЛАВНАЯ) -->
     <div id="catalog-view" class="fade-in">
         <div class="search-container">
-            <input type="text" id="search-input" class="search-input" placeholder="Поиск устройств..." oninput="renderCatalog()">
+            <input type="text" id="search-input" class="search-input" placeholder="Поиск моделей, категорий, характеристик..." oninput="renderCatalog()">
         </div>
-        
         <div class="category-scroll" id="cat-container"></div>
-
         <div class="grid" id="products-grid"></div>
     </div>
 
-    <!-- 2. СТРАНИЦА ТОВАРА И КАЛЬКУЛЯТОР -->
     <div id="product-view" class="view-product hidden fade-in">
         <div class="nav-back" onclick="switchView('catalog-view')">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            Назад в каталог
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Вернуться в каталог
         </div>
         
         <div class="prod-hero">
@@ -246,50 +236,45 @@
         </div>
         
         <div class="prod-details">
-            <div class="prod-header-title" id="pv-title">Загрузка...</div>
+            <div class="prod-header-title" id="pv-title">Загрузка спецификаций...</div>
             <div class="prod-header-price" id="pv-price">0 ₽</div>
 
-            <!-- ВЫБОР ЦВЕТА -->
             <div class="selector-group" id="block-colors">
-                <span class="selector-label">Цвет <span id="pv-color-name" style="color:var(--text-muted); font-weight:500;"></span></span>
+                <span class="selector-label">Выберите цвет: <span id="pv-color-name" style="color:var(--primary); text-transform: none;"></span></span>
                 <div class="color-options" id="pv-colors-container"></div>
             </div>
 
-            <!-- ВЫБОР ПАМЯТИ -->
             <div class="selector-group" id="block-memories">
-                <span class="selector-label">Память</span>
+                <span class="selector-label">Объем памяти:</span>
                 <div class="pill-options" id="pv-memories-container"></div>
             </div>
 
-            <!-- ВЫБОР SIM -->
             <div class="selector-group" id="block-sims">
-                <span class="selector-label">Связь</span>
+                <span class="selector-label">Спецификация связи:</span>
                 <div class="pill-options" id="pv-sims-container"></div>
             </div>
 
-            <!-- КАЛЬКУЛЯТОР РАССРОЧКИ -->
             <div class="calc-wrapper">
                 <div class="calc-title">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16.01" y2="14"></line><line x1="12" y1="14" x2="12.01" y2="14"></line><line x1="8" y1="14" x2="8.01" y2="14"></line><line x1="16" y1="18" x2="16.01" y2="18"></line><line x1="12" y1="18" x2="12.01" y2="18"></line><line x1="8" y1="18" x2="8.01" y2="18"></line></svg>
-                    Рассрочка Mubaraka
+                    Условия рассрочки Mubaraka
                 </div>
 
                 <div class="label-row" style="margin-top:0;">
-                    <label>Срок рассрочки</label>
-                    <span class="val-badge" id="calc-months-val">6 мес.</span>
+                    <label>Период рассрочки</label>
+                    <span class="val-badge" id="calc-months-val">6 месяцев</span>
                 </div>
                 <input type="range" id="calc-months" min="3" max="12" value="6" step="1" oninput="updateCalculator()">
 
                 <div class="label-row">
                     <label>Первоначальный взнос</label>
-                    <span class="val-badge" id="calc-dp-percent" style="color:var(--primary);">0%</span>
+                    <span class="val-badge" id="calc-dp-percent">0%</span>
                 </div>
                 <div class="price-input-wrapper">
                     <input type="number" id="calc-dp-input" value="0" step="1000" oninput="syncDpInput()" onblur="validateDp()">
-                    <span style="font-weight:700; color:var(--text-muted);">₽</span>
+                    <span style="font-weight:700; color:var(--text-muted); font-size: 18px;">₽</span>
                 </div>
                 
-                <!-- Строгое предупреждение -->
                 <div id="calc-warning" class="info-text"></div>
                 
                 <input type="range" id="calc-dp-slider" min="0" max="100" value="0" step="1" oninput="syncDpSlider()">
@@ -299,51 +284,58 @@
                 </div>
 
                 <div class="result-block">
-                    <div class="res-row"><span>Стоимость устройства:</span> <span class="val" id="res-price">0 ₽</span></div>
-                    <div class="res-row"><span>Первый взнос:</span> <span class="val" id="res-dp">0 ₽</span></div>
-                    <div class="res-row"><span>Наценка (4%/мес):</span> <span class="val" id="res-markup">0 ₽</span></div>
+                    <div class="res-row"><span>Цена устройства:</span> <span class="val" id="res-price">0 ₽</span></div>
+                    <div class="res-row"><span>Внесенный аванс:</span> <span class="val" id="res-dp">0 ₽</span></div>
+                    <div class="res-row"><span>Фиксированная торговая наценка:</span> <span class="val" id="res-markup">0 ₽</span></div>
                     
                     <div class="res-total">
-                        <span style="color:var(--text-main); font-size:18px;">Ежемесячный платеж</span>
-                        <span id="res-monthly">0 ₽</span>
+                        <span style="color:var(--text-main); font-size:17px; font-weight:600;">Ежемесячный платеж:</span>
+                        <span id="res-monthly" style="color:var(--primary);">0 ₽</span>
                     </div>
                 </div>
             </div>
 
-            <!-- ДОСТАВКА И ЗАКАЗ -->
+            <div class="calc-wrapper" style="margin-bottom: 24px;">
+                <div class="calc-title">💬 Онлайн-консультация по этой модели</div>
+                <div class="chat-box" id="client-chat-box"></div>
+                <div style="display:flex; gap:10px;">
+                    <input type="text" id="client-chat-input" placeholder="Задайте вопрос по рассрочке..." style="flex:1; padding:14px; border-radius:12px; border:1px solid var(--border); background:var(--bg-input); color:white; outline:none;">
+                    <button class="btn-outline" style="border-color:var(--primary); color:var(--primary);" onclick="sendChatMessage('client')">Отправить</button>
+                </div>
+            </div>
+
             <div class="order-form">
                 <label class="delivery-toggle" id="del-toggle-label">
                     <input type="checkbox" id="del-checkbox" onchange="toggleDelivery()">
-                    Доставка по ЧР (Бесплатно)
+                    Бесплатная доставка по Чеченской Республике
                 </label>
-                <input type="text" id="del-address" class="address-input" placeholder="Укажите город, улицу, дом...">
+                <input type="text" id="del-address" class="address-input" placeholder="Введите точный адрес доставки (Город, район, улица, дом)...">
             </div>
         </div>
 
         <div class="bottom-action-bar">
             <button class="btn-main" onclick="placeOrder()">
-                Оформить в WhatsApp
+                Перейти к оформлению в WhatsApp
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
             </button>
         </div>
     </div>
 
-    <!-- 3. АДМИН ПАНЕЛЬ -->
     <div id="admin-ui" class="admin-wrap fade-in">
         <div class="admin-header-flex">
-            <h2 style="font-size:26px; font-weight:800; letter-spacing:-0.5px;">Панель управления</h2>
-            <button class="btn-reset" onclick="resetStats()" title="Обнулить выручку и архив">
+            <h2 style="font-size:26px; font-weight:900; letter-spacing:-0.5px;">Панель управления Mubaraka</h2>
+            <button class="btn-reset" onclick="resetStats()" title="Полное обнуление архива">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
             </button>
         </div>
         
         <div class="dashboard-stats">
             <div class="stat-card">
-                <div class="stat-title">Выручка (Отгружено)</div>
+                <div class="stat-title">Общая выручка отгрузок</div>
                 <div class="stat-value" id="stat-revenue" style="color: var(--primary);">0 ₽</div>
             </div>
             <div class="stat-card">
-                <div class="stat-title">Успешных заказов</div>
+                <div class="stat-title">Выполнено договоров</div>
                 <div class="stat-value" id="stat-orders">0</div>
             </div>
         </div>
@@ -351,57 +343,60 @@
         <div class="admin-tabs">
             <button class="admin-tab active" onclick="switchAdminTab('tab-orders')">В работе <span id="orders-badge" style="background:var(--danger); color:white; padding:2px 8px; border-radius:12px; font-size:12px; margin-left:6px; display:none;">0</span></button>
             <button class="admin-tab" onclick="switchAdminTab('tab-sent')">Архив</button>
-            <button class="admin-tab" onclick="switchAdminTab('tab-parser')">Чтение WhatsApp</button>
-            <button class="admin-tab" onclick="switchAdminTab('tab-products')">База устройств</button>
+            <button class="admin-tab" onclick="switchAdminTab('tab-chats')">Активные чаты</button>
+            <button class="admin-tab" onclick="switchAdminTab('tab-parser')">Парсер шифра</button>
+            <button class="admin-tab" onclick="switchAdminTab('tab-products')">Каталог техники</button>
             <button class="admin-tab" style="margin-left:auto; background:var(--danger-light); color:var(--danger); border:none;" onclick="exitAdmin()">Выйти</button>
         </div>
 
         <div class="admin-section active" id="tab-orders">
-            <h3 style="margin-bottom:20px; font-size:20px; font-weight:800;">Новые заказы</h3>
             <div id="admin-orders-list"></div>
         </div>
 
         <div class="admin-section" id="tab-sent">
-            <h3 style="margin-bottom:20px; font-size:20px; font-weight:800;">Архив отгрузок</h3>
             <div id="sent-orders-list"></div>
         </div>
 
+        <div class="admin-section" id="tab-chats">
+            <h3 style="margin-bottom:16px;">Мониторинг консультаций клиентов</h3>
+            <div id="admin-chats-list"></div>
+        </div>
+
         <div class="admin-section" id="tab-parser">
-            <h3 style="margin-bottom:8px; font-size:20px; font-weight:800;">Распознавание заказа</h3>
-            <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px;">Вставьте текст заказа, скопированный из WhatsApp.</p>
+            <h3 style="margin-bottom:8px; font-size:20px; font-weight:800;">Восстановление спецификации заказа</h3>
+            <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px;">Парсер автоматически распознает модель, цвет, память и условия рассрочки из текстового массива сообщения WhatsApp.</p>
             <div class="input-group">
-                <textarea id="inp-wa-text" rows="10" placeholder="Вставьте текст сюда..." style="font-family: monospace; line-height: 1.5;"></textarea>
+                <textarea id="inp-wa-text" rows="10" placeholder="Вставьте скопированный текст из чата..."></textarea>
             </div>
-            <button class="btn-main" style="width:100%; padding: 16px;" onclick="parseOrderText()">Распознать и добавить</button>
+            <button class="btn-main" style="width:100%; padding: 16px;" onclick="parseOrderText()">Сгенерировать карту рассрочки</button>
         </div>
 
         <div class="admin-section" id="tab-products">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                <h3 style="font-size:20px; font-weight:800;">Учет устройств</h3>
-                <button class="btn-main" style="width:auto; padding:12px 24px;" onclick="openProductModal()">+ Добавить</button>
+                <h3 style="font-size:20px; font-weight:800;">Номенклатура устройств</h3>
+                <button class="btn-main" style="width:auto; padding:12px 24px;" onclick="openProductModal()">+ Добавить модель</button>
             </div>
             <div class="table-wrap">
                 <table>
-                    <thead><tr><th>Модель</th><th>Категория</th><th>Базовая цена</th><th>Цвета/Память</th><th>Действие</th></tr></thead>
+                    <thead><tr><th>Наименование модели</th><th>Категория</th><th>Базовая цена</th><th>Модификации</th><th>Действие</th></tr></thead>
                     <tbody id="admin-prod-table"></tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <!-- МОДАЛКА: ДОБАВЛЕНИЕ/РЕДАКТИРОВАНИЕ ТОВАРА -->
     <div class="modal-overlay" id="modal-product">
         <div class="modal-card">
-            <h3 style="font-size:22px; font-weight:800; margin-bottom:24px;" id="prod-modal-title">Карточка устройства</h3>
+            <h3 style="font-size:22px; font-weight:800; margin-bottom:24px;" id="prod-modal-title">Спецификации устройства</h3>
             <input type="hidden" id="ap-id" value="">
             
             <div class="input-group">
-                <label>Название модели *</label>
-                <input type="text" id="ap-name" placeholder="Например: iPhone 15 Pro Max">
+                <label>Название модели устройства *</label>
+                <input type="text" id="ap-name" placeholder="Например: Samsung Galaxy S26 Ultra">
             </div>
 
             <div class="input-group">
-                <label>Категория *</label>
+                <label>Категория оборудования *</label>
                 <select id="ap-cat">
                     <option value="Apple">Apple</option>
                     <option value="Samsung">Samsung</option>
@@ -412,40 +407,36 @@
                 </select>
             </div>
 
-            <!-- Варианты ЦВЕТОВ -->
             <div class="dynamic-list">
-                <label style="font-size:14px; font-weight:700; display:block; margin-bottom:12px;">Цвета и Фото</label>
+                <label style="font-size:14px; font-weight:700; display:block; margin-bottom:12px;">Модификации цвета и ссылки на изображения</label>
                 <div id="ap-colors-list"></div>
-                <button class="btn-add-row" onclick="addAdminColorRow()">+ Добавить цвет</button>
+                <button class="btn-add-row" onclick="addAdminColorRow()">+ Добавить цветовую схему</button>
             </div>
 
-            <!-- Варианты ПАМЯТИ -->
             <div class="dynamic-list">
-                <label style="font-size:14px; font-weight:700; display:block; margin-bottom:12px;">Конфигурации и цены *</label>
+                <label style="font-size:14px; font-weight:700; display:block; margin-bottom:12px;">Конфигурации накопителя и цены *</label>
                 <div id="ap-memories-list"></div>
-                <button class="btn-add-row" onclick="addAdminMemoryRow()">+ Добавить конфигурацию</button>
+                <button class="btn-add-row" onclick="addAdminMemoryRow()">+ Добавить конфигурацию цен</button>
             </div>
 
-            <!-- Варианты SIM -->
             <div class="dynamic-list">
-                <label style="font-size:14px; font-weight:700; display:block; margin-bottom:12px;">Типы связи (через запятую)</label>
-                <input type="text" id="ap-sims" placeholder="Nano-SIM + eSIM, Wi-Fi Only" style="width:100%; padding:14px; border-radius:12px; border:1px solid var(--border); outline:none;">
+                <label style="font-size:14px; font-weight:700; display:block; margin-bottom:12px;">Типы связи / Модули (через запятую)</label>
+                <input type="text" id="ap-sims" placeholder="Nano-SIM + eSIM, Wi-Fi, 5G Cellular">
             </div>
             
             <div style="display:flex; gap:12px; margin-top:32px;">
                 <button class="btn-outline" style="flex:1; padding:16px;" onclick="closeModal('modal-product')">Отмена</button>
-                <button class="btn-main" style="flex:2; padding:16px;" onclick="saveAdminProduct()">Сохранить</button>
+                <button class="btn-main" style="flex:2; padding:16px;" onclick="saveAdminProduct()">Сохранить карточку</button>
             </div>
-            <button id="btn-del-prod" style="width:100%; margin-top:12px; padding:16px; border-radius:16px; border:none; background:var(--danger-light); color:var(--danger); font-weight:700; cursor:pointer; transition:0.2s; display:none;" onclick="deleteAdminProduct()">Удалить устройство навсегда</button>
+            <button id="btn-del-prod" style="width:100%; margin-top:12px; padding:16px; border-radius:16px; border:none; background:var(--danger-light); color:var(--danger); font-weight:700; cursor:pointer; display:none;" onclick="deleteAdminProduct()">Удалить модель из базы</button>
         </div>
     </div>
 
-    <!-- МОДАЛКА: ПАРОЛЬ -->
     <div class="modal-overlay" id="modal-auth">
         <div class="modal-card" style="max-width:340px; text-align:center;">
-            <h3 style="font-weight:800; font-size:22px; margin-bottom:8px;">Доступ Mubaraka</h3>
-            <p style="font-size:14px; color:var(--text-muted); margin-bottom:24px;">Введите ПИН-код администратора</p>
-            <input type="password" id="auth-pin" placeholder="••••" style="width:100%; text-align:center; letter-spacing:12px; font-size:28px; padding:16px; border-radius:16px; border:2px solid var(--border); outline:none; margin-bottom:24px; background:var(--bg-body);">
+            <h3 style="font-weight:800; font-size:22px; margin-bottom:8px;">Авторизация PRO</h3>
+            <p style="font-size:14px; color:var(--text-muted); margin-bottom:24px;">Введите защищенный пин-код</p>
+            <input type="password" id="auth-pin" placeholder="••••" style="width:100%; text-align:center; letter-spacing:12px; font-size:28px; padding:16px; border-radius:16px; border:2px solid var(--border); outline:none; margin-bottom:24px; background:var(--bg-input); color:white;">
             <div style="display:flex; gap:12px;">
                 <button class="btn-outline" style="flex:1;" onclick="closeModal('modal-auth')">Отмена</button>
                 <button class="btn-main" style="flex:1; padding:14px;" onclick="checkPin()">Войти</button>
@@ -454,38 +445,40 @@
     </div>
 
     <script>
+        // Глобальный отказоустойчивый стек логов
+        window.onerror = function(msg) { showToast("Уведомление системы: " + msg); };
+
         // =========================================================================
-        // 1. ИНИЦИАЛИЗАЦИЯ И БАЗА ДАННЫХ
+        // 1. БАЗОВАЯ КОНФИГУРАЦИЯ И СЕТЕВОЕ СОСТОЯНИЕ БАЗЫ ДАННЫХ
         // =========================================================================
         const ADMIN_PIN = "0908";
         const WHATSAPP_NUM = "79298961858";
         
-        let isAdmin = false;
-        let clicks = 0, clickTimer = null;
+        let categoriesList = ["Все", "Apple", "Samsung", "Oppo", "Планшеты", "Ноутбуки", "Другое"];
         
-        const defaultCats = ["Apple", "Samsung", "Oppo", "Планшеты", "Ноутбуки", "Другое"];
-        const defaultPhones = [
+        const initialSetupPhones = [
             {
-                id: "ph_1", name: "iPhone 15 Pro Max", cat: "Apple",
+                id: "prod_apple_15pm", name: "iPhone 15 Pro Max", cat: "Apple",
                 colors: [
-                    { name: "Natural Titanium", hex: "#878681", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500" },
-                    { name: "Blue Titanium", hex: "#2a3642", img: "https://images.unsplash.com/photo-1696446701796-da61225697cc?w=500" }
+                    { name: "Natural Titanium", hex: "#878681", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600" },
+                    { name: "Blue Titanium", hex: "#2a3642", img: "https://images.unsplash.com/photo-1696446701796-da61225697cc?w=600" }
                 ],
                 memories: [
                     { size: "256GB", price: 125000 },
-                    { size: "512GB", price: 145000 }
+                    { size: "512GB", price: 145000 },
+                    { size: "1TB", price: 175000 }
                 ],
-                sims: ["Nano-SIM + eSIM", "Dual eSIM"]
+                sims: ["eSIM + Nano-SIM", "Dual eSIM"]
             }
         ];
 
-        function loadLocalData(key, defaultData) {
-            try { let d = localStorage.getItem(key); return d ? JSON.parse(d) : defaultData; } 
-            catch(e) { return defaultData; }
+        function loadCachedData(key, fallback) {
+            try { let d = localStorage.getItem(key); return d ? JSON.parse(d) : fallback; } catch(e) { return fallback; }
         }
 
-        let products = loadLocalData('mb_phones_v2', defaultPhones);
-        let orders = loadLocalData('mb_orders_v2', []);
+        let products = loadCachedData('mub_phones_v3', initialSetupPhones);
+        let orders = loadCachedData('mub_orders_v3', []);
+        let allChats = loadCachedData('mub_chats_v3', {});
         
         let db;
         let isFirebaseConnected = false;
@@ -501,50 +494,71 @@
             measurementId: "G-DLLP3KWT9D"
         };
 
-        try {
-            firebase.initializeApp(firebaseConfig);
-            db = firebase.database();
-            isFirebaseConnected = true;
+        // ФУНКЦИЯ 1: Инициализация Firebase с архитектурой Local-First под ветку phones_v3
+        function initFirebase() {
+            try {
+                firebase.initializeApp(firebaseConfig);
+                db = firebase.database();
+                isFirebaseConnected = true;
+                console.log("Фоновая синхронизация Mubaraka Cloud активна.");
 
-            db.ref('phones_v2/products').on('value', snap => {
-                if(snap.exists()) {
-                    products = Object.values(snap.val());
-                    localStorage.setItem('mb_phones_v2', JSON.stringify(products));
-                    if(!isAdmin && document.getElementById('catalog-view').classList.contains('hidden') === false) renderCatalog();
-                    if(isAdmin) renderAdminProducts();
-                }
-            });
+                db.ref('phones_v3/products').on('value', snap => {
+                    if(snap.exists()) {
+                        products = safeDataConverter(snap.val());
+                        localStorage.setItem('mub_phones_v3', JSON.stringify(products));
+                        if(!isAdmin && !currentProd) renderCatalog();
+                        if(isAdmin) renderAdminProducts();
+                    }
+                });
 
-            db.ref('phones_v2/orders').on('value', snap => {
-                if(snap.exists()) {
-                    orders = Object.values(snap.val());
-                    localStorage.setItem('mb_orders_v2', JSON.stringify(orders));
-                    if(isAdmin) { renderAdminOrders(); updateDashboard(); }
-                }
-            });
-        } catch(e) { console.error("Firebase offline", e); }
+                db.ref('phones_v3/orders').on('value', snap => {
+                    if(snap.exists()) {
+                        orders = safeDataConverter(snap.val());
+                        localStorage.setItem('mub_orders_v3', JSON.stringify(orders));
+                        if(isAdmin) { renderAdminOrders(); updateDashboard(); }
+                    }
+                });
 
+                db.ref('phones_v3/chats').on('value', snap => {
+                    if(snap.exists()) {
+                        allChats = snap.val();
+                        localStorage.setItem('mub_chats_v3', JSON.stringify(allChats));
+                        if(currentProd) listenCurrentChat();
+                        if(isAdmin && document.getElementById('tab-chats').classList.contains('active')) renderAdminChats();
+                    }
+                });
+            } catch(e) { console.warn("Firebase offline mode active", e); }
+        }
+
+        function safeDataConverter(data) {
+            if(!data) return [];
+            return Array.isArray(data) ? data : Object.values(data);
+        }
+
+        // ФУНКЦИЯ 2: Сохранение данных в Cloud с поддержкой дублирования в локальный кэш
         function saveToCloud() {
-            localStorage.setItem('mb_phones_v2', JSON.stringify(products));
-            localStorage.setItem('mb_orders_v2', JSON.stringify(orders));
-            if(isFirebaseConnected) {
-                let prodObj = {}; products.forEach(p => prodObj[p.id] = p);
-                let ordObj = {}; orders.forEach(o => ordObj[o.id] = o);
-                db.ref('phones_v2/products').set(prodObj);
-                db.ref('phones_v2/orders').set(ordObj);
+            localStorage.setItem('mub_phones_v3', JSON.stringify(products));
+            localStorage.setItem('mub_orders_v3', JSON.stringify(orders));
+            localStorage.setItem('mub_chats_v3', JSON.stringify(allChats));
+            
+            if(isFirebaseConnected && db) {
+                let pObj = {}; products.forEach(p => pObj[p.id] = p);
+                let oObj = {}; orders.forEach(o => oObj[o.id] = o);
+                db.ref('phones_v3/products').set(pObj);
+                db.ref('phones_v3/orders').set(oObj);
+                db.ref('phones_v3/chats').set(allChats);
             }
         }
 
         // =========================================================================
-        // 2. УТИЛИТЫ И НАВИГАЦИЯ
+        // 2. ОТОБРАЖЕНИЕ ИНТЕРФЕЙСА И НАВИГАЦИЯ
         // =========================================================================
         function showToast(msg) {
-            let el = document.getElementById('toast');
-            el.innerText = msg; el.classList.add('show');
-            setTimeout(() => el.classList.remove('show'), 3000);
+            let el = document.getElementById('toast'); el.innerText = msg; el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 2500);
         }
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-        function formatMoney(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+        function formatMoney(n) { return n.toLocaleString('ru-RU'); }
         
         function switchView(viewId) {
             document.getElementById('catalog-view').classList.add('hidden');
@@ -562,59 +576,58 @@
                 clearTimeout(clickTimer); clicks = 0;
                 document.getElementById('auth-pin').value = '';
                 document.getElementById('modal-auth').classList.add('active');
-                setTimeout(()=>document.getElementById('auth-pin').focus(), 100);
+                setTimeout(()=>document.getElementById('auth-pin').focus(), 120);
             }
         }
+
         function checkPin() {
             if(document.getElementById('auth-pin').value === ADMIN_PIN) {
                 closeModal('modal-auth'); isAdmin = true;
                 document.getElementById('admin-badge').style.display = 'block';
                 switchView('admin-ui'); renderAdminOrders(); renderAdminProducts(); updateDashboard();
-                showToast("✅ Доступ разрешен");
-            } else { showToast("❌ Неверный пин-код"); }
+                showToast("PRO-Режим активирован успешно.");
+            } else { showToast("❌ Неверный ключ авторизации"); }
         }
+
         function exitAdmin() {
             isAdmin = false; document.getElementById('admin-badge').style.display = 'none';
             switchView('catalog-view'); renderCatalog();
         }
 
-        // =========================================================================
-        // 3. КАТАЛОГ КЛИЕНТА (С КАТЕГОРИЯМИ)
-        // =========================================================================
+        // ФУНКЦИЯ 3: Рендеринг динамического каталога по категориям
         let currentCat = "Все";
-        
-        function renderCategoriesUI() {
-            let cList = ["Все", ...defaultCats];
+        function renderCategories() {
             let html = '';
-            cList.forEach(c => {
+            categoriesList.forEach(c => {
                 html += `<button class="cat-btn ${currentCat === c ? 'active' : ''}" onclick="filterCat('${c}')">${c}</button>`;
             });
             document.getElementById('cat-container').innerHTML = html;
         }
+        function filterCat(cat) { currentCat = cat; renderCategories(); renderCatalog(); }
 
-        function filterCat(cat) { currentCat = cat; renderCategoriesUI(); renderCatalog(); }
-
+        // ФУНКЦИЯ 4: Рендеринг основного грида товаров с поиском по номенклатуре
         function renderCatalog() {
             let q = document.getElementById('search-input').value.toLowerCase();
             let grid = document.getElementById('products-grid');
+            if(!grid) return;
             grid.innerHTML = '';
             
             let filtered = products;
             if(currentCat !== "Все") filtered = filtered.filter(p => p.cat === currentCat);
-            if(q) filtered = filtered.filter(p => p.name.toLowerCase().includes(q));
+            if(q) filtered = filtered.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
 
-            if(filtered.length===0) { grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:60px 20px;font-weight:600;">Ничего не найдено</div>`; return; }
+            if(filtered.length === 0) { grid.innerHTML = `<div style="grid-column:1/-1;" class="empty-state">Устройства не найдены в этой категории</div>`; return; }
 
             filtered.forEach(p => {
-                let defaultPrice = p.memories && p.memories.length > 0 ? p.memories[0].price : 0;
-                let defaultImg = p.colors && p.colors.length > 0 && p.colors[0].img ? p.colors[0].img : 'https://via.placeholder.com/400?text=Нет+фото';
+                let firstPrice = p.memories && p.memories.length > 0 ? p.memories[0].price : 0;
+                let cardImg = p.colors && p.colors.length > 0 && p.colors[0].img ? p.colors[0].img : 'https://via.placeholder.com/400?text=Mubaraka';
                 
                 grid.innerHTML += `
                     <div class="product-card" onclick="openProduct('${p.id}')">
-                        <div class="product-img-wrap"><img src="${defaultImg}" loading="lazy"></div>
+                        <div class="product-img-wrap"><img src="${cardImg}" loading="lazy"></div>
                         <div class="product-info">
                             <div class="product-title">${p.name}</div>
-                            <div class="product-price">от ${formatMoney(defaultPrice)} ₽</div>
+                            <div class="product-price">от ${formatMoney(firstPrice)} ₽</div>
                         </div>
                     </div>
                 `;
@@ -622,18 +635,19 @@
         }
 
         // =========================================================================
-        // 4. КАРТОЧКА ТОВАРА И КАЛЬКУЛЯТОР
+        // 3. СТРАНИЦА ТОВАРА И КАЛЬКУЛЯЦИЯ СТРОГИХ ЛИМИТОВ
         // =========================================================================
         let currentProd = null;
-        let selColorIdx = 0, selMemoryIdx = 0, selSimIdx = 0;
+        let colorIdx = 0, memoryIdx = 0, simIdx = 0;
         let isDelivery = false;
 
+        // ФУНКЦИЯ 5: Загрузка продукта и сброс калькулятора в дефолтные состояния
         function openProduct(id) {
             currentProd = products.find(p => p.id === id);
             if(!currentProd) return;
             
-            selColorIdx = 0; selMemoryIdx = 0; selSimIdx = 0;
-            isDelivery = false; document.getElementById('del-checkbox').checked = false;
+            colorIdx = 0; memoryIdx = 0; simIdx = 0; isDelivery = false;
+            document.getElementById('del-checkbox').checked = false;
             document.getElementById('del-address').style.display = 'none';
             document.getElementById('del-address').value = '';
             document.getElementById('del-toggle-label').classList.remove('active');
@@ -643,41 +657,42 @@
             
             renderProductDetails();
             switchView('product-view');
+            listenCurrentChat();
         }
 
         function renderProductDetails() {
             document.getElementById('pv-title').innerText = currentProd.name;
             
             // Цвета
-            let cHtml = '';
             if(currentProd.colors && currentProd.colors.length > 0) {
                 document.getElementById('block-colors').style.display = 'block';
-                document.getElementById('pv-image').src = currentProd.colors[selColorIdx].img || 'https://via.placeholder.com/400';
-                document.getElementById('pv-color-name').innerText = currentProd.colors[selColorIdx].name;
+                document.getElementById('pv-image').src = currentProd.colors[colorIdx].img || 'https://via.placeholder.com/400';
+                document.getElementById('pv-color-name').innerText = currentProd.colors[colorIdx].name;
+                let cHtml = '';
                 currentProd.colors.forEach((c, i) => {
-                    cHtml += `<div class="color-bubble ${i === selColorIdx ? 'active' : ''}" onclick="selColor(${i})">
-                                <div class="color-bubble-inner" style="background-color: ${c.hex || '#ccc'}"></div>
+                    cHtml += `<div class="color-bubble ${i === colorIdx ? 'active' : ''}" onclick="selectColor(${i})">
+                                <div class="color-bubble-inner" style="background: ${c.hex || '#fff'}"></div>
                               </div>`;
                 });
                 document.getElementById('pv-colors-container').innerHTML = cHtml;
             } else { document.getElementById('block-colors').style.display = 'none'; }
 
-            // Память / Конфигурации
-            let mHtml = '';
+            // Память
             if(currentProd.memories && currentProd.memories.length > 0) {
                 document.getElementById('block-memories').style.display = 'block';
+                let mHtml = '';
                 currentProd.memories.forEach((m, i) => {
-                    mHtml += `<div class="pill-btn ${i === selMemoryIdx ? 'active' : ''}" onclick="selMemory(${i})">${m.size}</div>`;
+                    mHtml += `<div class="pill-btn ${i === memoryIdx ? 'active' : ''}" onclick="selectMemory(${i})">${m.size}</div>`;
                 });
                 document.getElementById('pv-memories-container').innerHTML = mHtml;
             } else { document.getElementById('block-memories').style.display = 'none'; }
 
-            // SIM
-            let sHtml = '';
+            // Связь
             if(currentProd.sims && currentProd.sims.length > 0) {
                 document.getElementById('block-sims').style.display = 'block';
+                let sHtml = '';
                 currentProd.sims.forEach((s, i) => {
-                    sHtml += `<div class="pill-btn ${i === selSimIdx ? 'active' : ''}" onclick="selSim(${i})">${s}</div>`;
+                    sHtml += `<div class="pill-btn ${i === simIdx ? 'active' : ''}" onclick="selectSim(${i})">${s}</div>`;
                 });
                 document.getElementById('pv-sims-container').innerHTML = sHtml;
             } else { document.getElementById('block-sims').style.display = 'none'; }
@@ -685,48 +700,47 @@
             updateCalculator(true);
         }
 
-        function selColor(idx) { selColorIdx = idx; renderProductDetails(); }
-        function selMemory(idx) { selMemoryIdx = idx; renderProductDetails(); }
-        function selSim(idx) { selSimIdx = idx; renderProductDetails(); }
+        function selectColor(i) { colorIdx = i; renderProductDetails(); }
+        function selectMemory(i) { memoryIdx = i; renderProductDetails(); }
+        function selectSim(i) { simIdx = i; renderProductDetails(); }
 
+        // ФУНКЦИЯ 6: Управление селектором бесплатной доставки по республике
         function toggleDelivery() {
             isDelivery = document.getElementById('del-checkbox').checked;
             document.getElementById('del-address').style.display = isDelivery ? 'block' : 'none';
             document.getElementById('del-toggle-label').classList.toggle('active', isDelivery);
-            // Цена доставки не плюсуется, она бесплатна. Просто обновляем UI
-            updateCalculator(true);
+            if(isDelivery) document.getElementById('del-address').focus();
         }
 
-        // --- СТРОГАЯ ЛОГИКА КАЛЬКУЛЯТОРА ---
-        function getBasePrice() {
+        function currentDevicePrice() {
             if(!currentProd || !currentProd.memories || currentProd.memories.length === 0) return 0;
-            return parseInt(currentProd.memories[selMemoryIdx].price) || 0;
-            // Доставка бесплатная, поэтому +0
+            return parseInt(currentProd.memories[memoryIdx].price) || 0;
         }
 
+        // ФУНКЦИЯ 7: Двунаправленная синхронизация - Ввод текста -> Слайдер взноса
         function syncDpInput() {
-            let p = getBasePrice();
-            let dp = parseInt(document.getElementById('calc-dp-input').value) || 0;
-            let pct = p > 0 ? (dp / p) * 100 : 0;
+            let p = currentDevicePrice();
+            let val = parseInt(document.getElementById('calc-dp-input').value) || 0;
+            let pct = p > 0 ? (val / p) * 100 : 0;
             if(pct > 100) pct = 100;
-            
-            // Не блокируем ввод сразу, чтобы юзер мог печатать, блокируем на blur (validateDp)
             document.getElementById('calc-dp-slider').value = pct;
             updateCalculator(false);
         }
 
+        // ФУНКЦИЯ 8: Двунаправленная синхронизация - Движение слайдера -> Текст взноса
         function syncDpSlider() {
-            let p = getBasePrice();
+            let p = currentDevicePrice();
             let pct = parseInt(document.getElementById('calc-dp-slider').value) || 0;
-            let dp = Math.floor(p * (pct/100));
-            document.getElementById('calc-dp-input').value = Math.round(dp/100)*100; 
+            let val = Math.floor(p * (pct / 100));
+            document.getElementById('calc-dp-input').value = Math.round(val / 100) * 100;
             updateCalculator(false);
         }
 
         function validateDp() { updateCalculator(true); }
 
-        function updateCalculator(forceValidation = true) {
-            let price = getBasePrice();
+        // ФУНКЦИЯ 9: Ядро расчёта рассрочки Mubaraka с жестким ограничением 25% при цене от 100 000 ₽
+        function updateCalculator(forceStrictValidation = true) {
+            let price = currentDevicePrice();
             document.getElementById('pv-price').innerText = formatMoney(price) + ' ₽';
             
             let months = parseInt(document.getElementById('calc-months').value) || 6;
@@ -734,127 +748,163 @@
 
             let dpInput = document.getElementById('calc-dp-input');
             let dpSlider = document.getElementById('calc-dp-slider');
-            let dp = parseInt(dpInput.value) || 0;
-            
+            let dpValue = parseInt(dpInput.value) || 0;
             let warnEl = document.getElementById('calc-warning');
             
-            // СТРОГОЕ ПРАВИЛО: ОТ 100К -> ВЗНОС 25%
-            let minDpPct = price >= 100000 ? 25 : 0;
-            let minDpRub = Math.floor(price * (minDpPct / 100));
+            // СТРОГОЕ ПРАВИЛО БЕЗОПАСНОСТИ СДЕЛКИ
+            let minPercent = price >= 100000 ? 25 : 0;
+            let minAllowedRub = Math.floor(price * (minPercent / 100));
 
-            // Физически блокируем ползунок
-            dpSlider.min = minDpPct;
-            document.getElementById('dp-min-lbl').innerText = minDpPct + '%';
+            dpSlider.min = minPercent;
 
-            if (price >= 100000) {
+            if(price >= 100000) {
                 warnEl.classList.add('warning');
-                warnEl.innerText = `⚠️ Сумма от 100 000 ₽. Обязателен взнос от 25% (${formatMoney(minDpRub)} ₽)`;
+                warnEl.innerText = `⚠️ Для моделей от 100 000 ₽ первый взнос строго от 25% (${formatMoney(minAllowedRub)} ₽). Требуется поручитель.`;
             } else {
                 warnEl.classList.remove('warning');
-                warnEl.innerText = `ℹ️ Доступна рассрочка без первого взноса`;
-                warnEl.style.display = 'block';
+                warnEl.innerText = `ℹ️ Одобрено Mubarak: рассрочка доступна без первоначального взноса.`;
             }
 
-            if(forceValidation) {
-                if (dp < minDpRub) dp = minDpRub;
-                if (dp > price) dp = price;
-                dpInput.value = Math.round(dp/100)*100;
-                dpSlider.value = price > 0 ? Math.round((dp/price)*100) : minDpPct;
+            if(forceStrictValidation) {
+                if(dpValue < minAllowedRub) dpValue = minAllowedRub;
+                if(dpValue > price) dpValue = price;
+                dpInput.value = Math.round(dpValue / 100) * 100;
+                dpSlider.value = price > 0 ? Math.round((dpValue / price) * 100) : minPercent;
             }
 
-            let pct = price > 0 ? Math.round((dp/price)*100) : 0;
-            document.getElementById('calc-dp-percent').innerText = pct + '%';
+            let realPct = price > 0 ? Math.round((dpValue / price) * 100) : 0;
+            document.getElementById('calc-dp-percent').innerText = realPct + '%';
 
-            // Наценка 4% в месяц на остаток
-            let financed = price - dp;
-            let markup = financed * 0.04 * months;
-            let totalDebt = financed + markup;
-            let monthly = Math.ceil((totalDebt / months) / 50) * 50; 
+            // Наценка 4% в месяц на остаток долга
+            let remainder = price - dpValue;
+            let markup = remainder * 0.04 * months;
+            let finalMonthlyPayment = Math.ceil(((remainder + markup) / months) / 50) * 50;
 
-            if (financed <= 0) { markup = 0; monthly = 0; }
+            if(remainder <= 0) { markup = 0; finalMonthlyPayment = 0; }
 
             document.getElementById('res-price').innerText = formatMoney(price) + ' ₽';
-            document.getElementById('res-dp').innerText = formatMoney(dp) + ' ₽';
+            document.getElementById('res-dp').innerText = formatMoney(dpValue) + ' ₽';
             document.getElementById('res-markup').innerText = formatMoney(Math.round(markup)) + ' ₽';
-            document.getElementById('res-monthly').innerText = formatMoney(monthly) + ' ₽';
+            document.getElementById('res-monthly').innerText = formatMoney(finalMonthlyPayment) + ' ₽';
         }
 
+        // ФУНКЦИЯ 10: Формирование структуры заказа и компиляция ссылки глубокого перехода в WhatsApp
         function placeOrder() {
-            let price = getBasePrice();
+            let price = currentDevicePrice();
             let dp = parseInt(document.getElementById('calc-dp-input').value) || 0;
             let months = document.getElementById('calc-months').value;
-            let addr = document.getElementById('del-address').value.trim();
+            let address = document.getElementById('del-address').value.trim();
 
-            if (isDelivery && !addr) { return showToast("⚠️ Укажите адрес для бесплатной доставки"); }
-            if (price >= 100000 && dp < price * 0.25) { return showToast("⚠️ Минимальный взнос 25% обязателен"); }
+            if(isDelivery && !address) return showToast("⚠️ Укажите адрес для бесплатной доставки.");
+            if(price >= 100000 && dp < price * 0.25) return showToast("⚠️ Первый взнос не может быть ниже 25%.");
 
-            let colorStr = currentProd.colors && currentProd.colors.length > 0 ? currentProd.colors[selColorIdx].name : "";
-            let memStr = currentProd.memories && currentProd.memories.length > 0 ? currentProd.memories[selMemoryIdx].size : "";
-            let simStr = currentProd.sims && currentProd.sims.length > 0 ? currentProd.sims[selSimIdx] : "";
+            let clr = currentProd.colors && currentProd.colors.length > 0 ? currentProd.colors[colorIdx].name : "Стандарт";
+            let mem = currentProd.memories && currentProd.memories.length > 0 ? currentProd.memories[memoryIdx].size : "Стандарт";
+            let sim = currentProd.sims && currentProd.sims.length > 0 ? currentProd.sims[simIdx] : "";
 
-            let msg = `🛒 НОВЫЙ ЗАКАЗ: MUBARAKA\n\n`;
-            msg += `📱 Устройство: ${currentProd.name}\n`;
-            if(colorStr) msg += `🎨 Цвет: ${colorStr}\n`;
-            if(memStr) msg += `💾 Конфигурация: ${memStr}\n`;
-            if(simStr) msg += `⚙️ Связь: ${simStr}\n`;
-            msg += `-------------------\n`;
-            msg += `💰 Базовая цена: ${formatMoney(price)} ₽\n`;
-            msg += `💳 Первый взнос: ${formatMoney(dp)} ₽\n`;
-            msg += `🗓 Срок: ${months} мес.\n`;
-            msg += `-------------------\n`;
-            if (isDelivery) msg += `🚚 Доставка: Да (По ЧР)\n📍 Адрес: ${addr}\n`;
-            else msg += `📦 Самовывоз\n`;
+            let messageText = `🛒 ОФОРМЛЕНИЕ РАССРОЧКИ: MUBARAKA\n\n`;
+            messageText += `📱 Оборудование: ${currentProd.name}\n`;
+            messageText += `🎨 Цвет: ${clr}\n`;
+            messageText += `💾 Емкость: ${mem}\n`;
+            if(sim) messageText += `⚙️ Модуль связи: ${sim}\n`;
+            messageText += `-------------------\n`;
+            messageText += `💰 Цена оборудования: ${formatMoney(price)} ₽\n`;
+            messageText += `💳 Авансовый взнос: ${formatMoney(dp)} ₽\n`;
+            messageText += `🗓 Срок кредитования: ${months} мес.\n`;
+            messageText += `-------------------\n`;
+            messageText += isDelivery ? `🚚 Способ получения: Бесплатная доставка\n📍 Направление: ${address}\n` : `📦 Способ получения: Самовывоз со склада\n`;
             
-            if(price >= 100000) msg += `\n*Готов предоставить фото паспорта и поручителя.*`;
+            if(price >= 100000) messageText += `\n* Обязуюсь прикрепить фото документов (своего паспорта и паспорта поручителя).*`;
 
-            let newOrder = {
-                id: "ORD-" + Date.now(),
+            // Локальный стек логов новых сделок
+            let newOrderObj = {
+                id: "MUB-" + Date.now(),
                 model: currentProd.name,
-                details: [colorStr, memStr, simStr].filter(Boolean).join(", "),
+                specs: `${clr}, ${mem}, ${sim}`,
                 price: price, dp: dp, months: months,
-                addr: isDelivery ? addr : "Самовывоз",
-                status: 'new',
+                addr: isDelivery ? address : "Самовывоз",
+                status: "new",
                 date: new Date().toLocaleDateString('ru-RU', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'})
             };
-            orders.unshift(newOrder); saveToCloud();
 
-            window.open(`https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`);
+            orders.unshift(newOrderObj);
+            saveToCloud();
+            window.open(`https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(messageText)}`);
         }
 
+        // =========================================================================
+        // 4. ОНЛАЙН ЧАТ С КЛИЕНТАМИ
+        // =========================================================================
+        function listenCurrentChat() {
+            if(!currentProd) return;
+            let box = document.getElementById('client-chat-box');
+            if(!box) return;
+            box.innerHTML = '';
+            
+            let chatKey = currentProd.id;
+            let currentChatData = allChats[chatKey] || [];
+            
+            currentChatData.forEach(m => {
+                box.innerHTML += `<div class="chat-msg ${m.sender}">${m.text}</div>`;
+            });
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function sendChatMessage(sender) {
+            let inputId = sender === 'client' ? 'client-chat-input' : 'admin-chat-active-input';
+            let inp = document.getElementById(inputId);
+            let text = inp.value.trim();
+            if(!text) return;
+
+            let chatKey = sender === 'client' ? currentProd.id : activeAdminChatKey;
+            if(!allChats[chatKey]) allChats[chatKey] = [];
+
+            allChats[chatKey].push({
+                sender: sender,
+                text: text,
+                time: Date.now()
+            });
+
+            inp.value = '';
+            saveToCloud();
+            if(sender === 'client') listenCurrentChat(); else renderAdminActiveChat();
+        }
 
         // =========================================================================
-        // 5. АДМИН ПАНЕЛЬ
+        // 5. ФУНКЦИОНАЛ АДМИНИСТРАТОРА (КОНСОЛЬ УПРАВЛЕНИЯ)
         // =========================================================================
         function switchAdminTab(id) {
             document.querySelectorAll('.admin-section').forEach(e => e.classList.remove('active'));
             document.querySelectorAll('.admin-tab').forEach(e => e.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             event.target.classList.add('active');
-            if(id === 'tab-orders' || id === 'tab-sent') { renderAdminOrders(); updateDashboard(); }
+            if(id === 'tab-orders' || id === 'tab-sent') renderAdminOrders();
+            if(id === 'tab-chats') renderAdminChats();
         }
 
         function updateDashboard() {
-            let rev = 0, count = 0, newCount = 0;
+            let revenue = 0, doneCount = 0, activeCount = 0;
             orders.forEach(o => {
-                if(o.status === 'sent') { rev += o.price; count++; } // Выручка считается по цене товара
-                if(o.status === 'new') newCount++;
+                if(o.status === 'sent') { revenue += o.price; doneCount++; }
+                if(o.status === 'new') activeCount++;
             });
-            document.getElementById('stat-revenue').innerText = formatMoney(rev) + ' ₽';
-            document.getElementById('stat-orders').innerText = count;
-
-            let badge = document.getElementById('orders-badge');
-            if(newCount > 0) { badge.style.display = 'inline-block'; badge.innerText = newCount; } 
-            else { badge.style.display = 'none'; }
+            document.getElementById('stat-revenue').innerText = formatMoney(revenue) + ' ₽';
+            document.getElementById('stat-orders').innerText = doneCount;
+            
+            let b = document.getElementById('orders-badge');
+            if(activeCount > 0) { b.style.display = 'inline-block'; b.innerText = activeCount; } else { b.style.display = 'none'; }
         }
 
+        // ФУНКЦИЯ 11: Безопасное полное обнуление архива с проверкой ПИН-кода
         function resetStats() {
-            let pin = prompt("⚠️ Внимание! Вы удалите ВЕСЬ АРХИВ заказов и обнулите выручку.\nНовые (не отгруженные) заказы останутся.\n\nВведите пин-код (0908):");
+            let pin = prompt("⚠️ Внимание! Вы собираетесь полностью стереть историю выполненных отгрузок.\nВведите защищенный пин-код:");
             if(pin === ADMIN_PIN) {
-                orders = orders.filter(o => o.status !== 'sent');
+                orders = orders.filter(o => o.status === 'new');
                 saveToCloud();
-                showToast("🔄 Статистика и архив обнулены");
-                if(!isFirebaseConnected) { renderAdminOrders(); updateDashboard(); }
-            } else if(pin !== null) { showToast("❌ Неверный пин-код"); }
+                showToast("🔄 Архив отгрузок очищен. Статистика обнулена.");
+                renderAdminOrders();
+                updateDashboard();
+            } else if(pin !== null) { showToast("❌ Ошибка авторизации доступа"); }
         }
 
         function renderAdminOrders() {
@@ -862,125 +912,167 @@
             let listSent = document.getElementById('sent-orders-list');
             listNew.innerHTML = ''; listSent.innerHTML = '';
 
-            let nOrd = orders.filter(o => o.status === 'new');
-            let sOrd = orders.filter(o => o.status === 'sent');
-
-            if(nOrd.length === 0) listNew.innerHTML = '<div style="color:var(--text-muted);">Новых заказов пока нет.</div>';
-            if(sOrd.length === 0) listSent.innerHTML = '<div style="color:var(--text-muted);">Архив пуст.</div>';
-
             orders.forEach((o, i) => {
-                let card = `
+                let html = `
                     <div class="order-card">
                         <div class="order-header">
                             <div>
-                                <div style="font-size:18px; font-weight:800; color:var(--text-main); margin-bottom:6px;">${o.model}</div>
-                                <div style="font-size:13px; color:var(--text-muted); font-weight:600;">${o.details}</div>
+                                <div style="font-size:18px; font-weight:800; color:white; margin-bottom:4px;">${o.model}</div>
+                                <div style="font-size:13px; color:var(--text-muted); font-weight:500;">${o.specs}</div>
                             </div>
                             <div style="text-align:right;">
-                                <div style="font-size:12px; color:var(--text-muted); background:var(--bg-body); padding:6px 10px; border-radius:8px; display:inline-block; margin-bottom:8px; font-weight:700;">${o.date}</div>
-                                <div style="font-size:20px; font-weight:900; color:var(--primary);">${formatMoney(o.price)} ₽</div>
+                                <div style="font-size:12px; color:var(--text-muted); background:var(--bg-body); padding:4px 8px; border-radius:6px; display:inline-block; font-weight:700; margin-bottom:6px;">${o.date}</div>
+                                <div style="font-size:19px; font-weight:900; color:var(--primary);">${formatMoney(o.price)} ₽</div>
                             </div>
                         </div>
-                        <div style="background:#f8fafc; padding:16px; border-radius:16px; margin-bottom:16px;">
-                            <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px; font-weight:600;"><span style="color:var(--text-muted);">Первый взнос:</span> <span>${formatMoney(o.dp)} ₽</span></div>
-                            <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px; font-weight:600;"><span style="color:var(--text-muted);">Срок:</span> <span>${o.months} мес.</span></div>
-                            <div style="display:flex; justify-content:space-between; font-size:14px; font-weight:600;"><span style="color:var(--text-muted);">Доставка:</span> <span style="text-align:right; max-width:60%;">${o.addr}</span></div>
+                        <div style="background:rgba(0,0,0,0.2); padding:14px; border-radius:12px; margin-bottom:14px; font-size:14px;">
+                            <div>Аванс взнос: ${formatMoney(o.dp)} ₽ | Период: ${o.months} мес.</div>
+                            <div style="margin-top:4px; color:var(--text-muted);">Локация: ${o.addr}</div>
                         </div>
                         ${o.status === 'new' ? 
-                            `<button class="btn-main" style="width:100%; padding:14px;" onclick="markAsSent(${i})">✅ Отметить как Отгружен</button>` : 
+                            `<button class="btn-main" style="width:100%; padding:12px; font-size:15px;" onclick="markAsSent(${i})">Подтвердить отгрузку (Списать в архив)</button>` : 
                             `<div style="display:flex; gap:10px;">
-                                <div style="flex:1; text-align:center; background:var(--bg-body); padding:14px; border-radius:14px; font-size:14px; font-weight:700; color:var(--text-muted);">В архиве</div>
-                                <button style="background:var(--danger-light); color:var(--danger); border:none; border-radius:14px; padding:0 20px; font-size:20px; cursor:pointer;" onclick="deleteArchiveOrder(${i})" title="Удалить">🗑</button>
+                                <div style="flex:1; background:var(--border); text-align:center; padding:12px; border-radius:12px; font-size:14px; font-weight:700;">Отгружен</div>
+                                <button style="background:var(--danger-light); color:var(--danger); border:none; border-radius:12px; padding:0 16px; cursor:pointer;" onclick="deleteArchiveOrder(${i})">🗑</button>
                             </div>`
                         }
                     </div>
                 `;
-                if(o.status === 'new') listNew.innerHTML += card;
-                else listSent.innerHTML += card;
+                if(o.status === 'new') listNew.innerHTML += html; else listSent.innerHTML += html;
             });
         }
 
-        function markAsSent(idx) {
-            orders[idx].status = 'sent'; saveToCloud(); showToast("📦 Заказ отправлен в архив");
-            if(!isFirebaseConnected) { renderAdminOrders(); updateDashboard(); }
-        }
-        function deleteArchiveOrder(idx) {
-            if(confirm("Удалить этот заказ из архива навсегда?")) {
-                orders.splice(idx, 1); saveToCloud(); showToast("🗑 Заказ удален");
-                if(!isFirebaseConnected) { renderAdminOrders(); updateDashboard(); }
-            }
-        }
+        function markAsSent(i) { orders[i].status = 'sent'; saveToCloud(); showToast("📦 Сделка перенесена в архив отгрузок"); }
+        function deleteArchiveOrder(i) { if(confirm("Удалить запись из архива?")) { orders.splice(i,1); saveToCloud(); renderAdminOrders(); } }
 
-        // --- ПАРСЕР ---
+        // ФУНКЦИЯ 12: Автоматизированный NLP парсер текстовых данных из чатов WhatsApp
         function parseOrderText() {
-            let text = document.getElementById('inp-wa-text').value;
-            if(!text.includes("MUBARAKA")) return showToast("❌ Неверный формат (нет MUBARAKA)");
+            let rawText = document.getElementById('inp-wa-text').value;
+            if(!rawText.includes("MUBARAKA")) return showToast("❌ Некорректная сигнатура шифра");
+
+            let model = rawText.match(/📱 Устройство:\s*(.+)/)?.[1] || "Оборудование";
+            let clr = rawText.match(/🎨 Цвет:\s*(.+)/)?.[1] || "";
+            let mem = rawText.match(/💾 Емкость:\s*(.+)/)?.[1] || "";
+            let sim = rawText.match(/⚙️ Модуль связи:\s*(.+)/)?.[1] || "";
             
-            let model = text.match(/📱 Устройство:\s*(.+)/)?.[1] || "Неизвестно";
-            let color = text.match(/🎨 Цвет:\s*(.+)/)?.[1] || "";
-            let mem = text.match(/💾 Конфигурация:\s*(.+)/)?.[1] || "";
-            let sim = text.match(/⚙️ Связь:\s*(.+)/)?.[1] || "";
+            let pStr = rawText.match(/💰 Цена оборудования:\s*(.+)/)?.[1] || "0";
+            let price = parseInt(pStr.replace(/\D/g, '')) || 0;
             
-            let priceStr = text.match(/💰 Базовая цена:\s*(.+)/)?.[1] || "0";
-            let price = parseInt(priceStr.replace(/\D/g, '')) || 0;
-            
-            let dpStr = text.match(/💳 Первый взнос:\s*(.+)/)?.[1] || "0";
+            let dpStr = rawText.match(/💳 Авансовый взнос:\s*(.+)/)?.[1] || "0";
             let dp = parseInt(dpStr.replace(/\D/g, '')) || 0;
             
-            let months = text.match(/🗓 Срок:\s*(\d+)/)?.[1] || "6";
-            
-            let isDel = text.includes("🚚 Доставка: Да");
-            let addr = text.match(/📍 Адрес:\s*(.+)/)?.[1] || "Самовывоз";
-            
-            let details = [color, mem, sim].filter(Boolean).join(", ");
+            let mStr = rawText.match(/🗓 Срок кредитования:\s*(\d+)/)?.[1] || "6";
+            let address = rawText.match(/📍 Направление:\s*(.+)/)?.[1] || "Самовывоз";
 
-            let newOrder = {
-                id: "ORD-" + Date.now(), model: model, details: details, price: price, dp: dp, months: months,
-                addr: isDel ? addr : "Самовывоз", status: 'new',
-                date: new Date().toLocaleDateString('ru-RU', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'})
+            let parsedOrder = {
+                id: "ORD-" + Date.now(),
+                model: model,
+                specs: [clr, mem, sim].filter(Boolean).join(", "),
+                price: price, dp: dp, months: mStr, addr: address, status: 'new',
+                date: new Date().toLocaleDateString('ru-RU')
             };
-            orders.unshift(newOrder); saveToCloud();
-            document.getElementById('inp-wa-text').value = ''; showToast("✅ Распознано успешно!");
+
+            orders.unshift(parsedOrder);
+            saveToCloud();
+            document.getElementById('inp-wa-text').value = '';
+            showToast("✅ Структура успешно восстановлена в базе");
             switchAdminTab('tab-orders');
         }
 
-        // --- УПРАВЛЕНИЕ БАЗОЙ ТОВАРОВ ---
-        function renderAdminProducts() {
-            let tbody = document.getElementById('admin-prod-table');
-            tbody.innerHTML = '';
-            products.forEach(p => {
-                let bp = p.memories && p.memories[0] ? p.memories[0].price : 0;
-                let vars = (p.colors?.length||0) + " цв. / " + (p.memories?.length||0) + " конф.";
-                tbody.innerHTML += `
-                    <tr>
-                        <td style="font-weight:700;">${p.name}</td>
-                        <td><span style="background:var(--bg-body); padding:6px 12px; border-radius:8px; font-size:12px; font-weight:700;">${p.cat || 'Другое'}</span></td>
-                        <td style="color:var(--primary); font-weight:800;">${formatMoney(bp)} ₽</td>
-                        <td style="color:var(--text-muted); font-size:13px; font-weight:600;">${vars}</td>
-                        <td><button class="btn-outline" onclick="editProduct('${p.id}')">Изменить</button></td>
-                    </tr>
+        // МОНИТОР АДМИН-ЧАТОВ
+        let activeAdminChatKey = '';
+        function renderAdminChats() {
+            let list = document.getElementById('admin-chats-list');
+            list.innerHTML = '';
+            
+            let keys = Object.keys(allChats);
+            if(keys.length === 0) { list.innerHTML = '<div>Нет активных консультаций по моделям</div>'; return; }
+
+            keys.forEach(k => {
+                let p = products.find(x => x.id === k);
+                let name = p ? p.name : "Устройство ("+k+")";
+                let msgs = allChats[k];
+                let lastMsg = msgs[msgs.length - 1]?.text || "";
+                
+                list.innerHTML += `
+                    <div style="border:1px solid var(--border); padding:16px; border-radius:14px; margin-bottom:10px; background:var(--bg-input); cursor:pointer;" onclick="openAdminChatWindow('${k}')">
+                        <div style="font-weight:700; margin-bottom:4px;">${name}</div>
+                        <div style="font-size:13px; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Клиент: ${lastMsg}</div>
+                    </div>
                 `;
             });
         }
 
-        let tempColors = [], tempMemories = [];
+        function openAdminChatWindow(key) {
+            activeAdminChatKey = key;
+            let p = products.find(x => x.id === key);
+            let name = p ? p.name : "Чат";
+            
+            let modalHtml = `
+                <div class="modal-overlay active" id="modal-admin-chat">
+                    <div class="modal-card">
+                        <h3 style="margin-bottom:14px;">${name}</h3>
+                        <div class="chat-box" id="admin-chat-dialog-box"></div>
+                        <div style="display:flex; gap:10px;">
+                            <input type="text" id="admin-chat-active-input" placeholder="Ответ клиенту от Mubaraka..." style="flex:1; padding:14px; border-radius:12px; background:var(--bg-input); color:white; border:1px solid var(--border); outline:none;">
+                            <button class="btn-main" style="width:auto; padding:0 20px;" onclick="sendChatMessage('admin')">Ответить</button>
+                        </div>
+                        <button class="btn-outline" style="width:100%; margin-top:14px;" onclick="closeModal('modal-admin-chat')">Закрыть</button>
+                    </div>
+                </div>
+            `;
+            let old = document.getElementById('modal-admin-chat'); if(old) old.remove();
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+            renderAdminActiveChat();
+        }
+
+        function renderAdminActiveChat() {
+            let box = document.getElementById('admin-chat-dialog-box');
+            if(!box) return;
+            box.innerHTML = '';
+            let msgs = allChats[activeAdminChatKey] || [];
+            msgs.forEach(m => {
+                box.innerHTML += `<div class="chat-msg ${m.sender}">${m.text}</div>`;
+            });
+            box.scrollTop = box.scrollHeight;
+        }
+
+        // УПРАВЛЕНИЕ ТОВАРАМИ
+        function renderAdminProducts() {
+            let tbody = document.getElementById('admin-prod-table');
+            if(!tbody) return; tbody.innerHTML = '';
+            
+            products.forEach(p => {
+                let base = p.memories && p.memories[0] ? p.memories[0].price : 0;
+                let count = `${p.colors?.length || 0} цв. / ${p.memories?.length || 0} конф.`;
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-weight:700; color:white;">${p.name}</td>
+                        <td><span style="background:var(--bg-input); padding:6px 12px; border-radius:8px; font-size:12px; font-weight:700;">${p.cat}</span></td>
+                        <td style="color:var(--primary); font-weight:800;">${formatMoney(base)} ₽</td>
+                        <td style="color:var(--text-muted); font-size:13px;">${count}</td>
+                        <td><button class="btn-outline" style="border-color:var(--primary); color:var(--primary);" onclick="editProduct('${p.id}')">Изменить</button></td>
+                    </tr>
+                `;
+            });
+        }
 
         function openProductModal() {
             document.getElementById('prod-modal-title').innerText = "Новое устройство";
             document.getElementById('ap-id').value = "";
             document.getElementById('ap-name').value = "";
             document.getElementById('ap-cat').value = "Apple";
-            document.getElementById('ap-sims').value = "";
+            document.getElementById('ap-sims').value = "eSIM + Nano-SIM, Dual eSIM";
             document.getElementById('btn-del-prod').style.display = 'none';
             tempColors = []; tempMemories = [];
-            addAdminColorRow(); addAdminMemoryRow(); 
+            addAdminColorRow(); addAdminMemoryRow();
             document.getElementById('modal-product').classList.add('active');
         }
 
         function editProduct(id) {
             let p = products.find(x => x.id === id);
             if(!p) return;
-            document.getElementById('prod-modal-title').innerText = "Настройка устройства";
+            document.getElementById('prod-modal-title').innerText = "Модификация номенклатуры";
             document.getElementById('ap-id').value = p.id;
             document.getElementById('ap-name').value = p.name;
             document.getElementById('ap-cat').value = p.cat || "Apple";
@@ -995,33 +1087,26 @@
         }
 
         function renderTempLists() {
-            let cList = document.getElementById('ap-colors-list');
-            cList.innerHTML = tempColors.map((c, i) => `
+            document.getElementById('ap-colors-list').innerHTML = tempColors.map((c, i) => `
                 <div class="dynamic-row">
-                    <input type="color" style="width:48px; padding:2px; cursor:pointer;" value="${c.hex}" onchange="updateTempC(${i}, 'hex', this.value)">
-                    <input type="text" placeholder="Название цвета" value="${c.name}" oninput="updateTempC(${i}, 'name', this.value)">
-                    <input type="text" placeholder="URL фото" value="${c.img}" oninput="updateTempC(${i}, 'img', this.value)">
-                    <button class="btn-del-row" onclick="removeTempC(${i})">X</button>
+                    <input type="color" style="width:44px; padding:0; cursor:pointer; height:36px;" value="${c.hex}" onchange="tempColors[${i}].hex = this.value">
+                    <input type="text" placeholder="Цвет" value="${c.name}" oninput="tempColors[${i}].name = this.value">
+                    <input type="text" placeholder="URL изображения" value="${c.img}" oninput="tempColors[${i}].img = this.value">
+                    <button class="btn-del-row" onclick="tempColors.splice(${i},1); renderTempLists();">X</button>
                 </div>
             `).join('');
 
-            let mList = document.getElementById('ap-memories-list');
-            mList.innerHTML = tempMemories.map((m, i) => `
+            document.getElementById('ap-memories-list').innerHTML = tempMemories.map((m, i) => `
                 <div class="dynamic-row">
-                    <input type="text" placeholder="Конфигурация (256GB)" value="${m.size}" oninput="updateTempM(${i}, 'size', this.value)">
-                    <input type="number" placeholder="Цена (₽)" value="${m.price}" oninput="updateTempM(${i}, 'price', this.value)">
-                    <button class="btn-del-row" onclick="removeTempM(${i})">X</button>
+                    <input type="text" placeholder="Память (256GB)" value="${m.size}" oninput="tempMemories[${i}].size = this.value">
+                    <input type="number" placeholder="Цена ₽" value="${m.price}" oninput="tempMemories[${i}].price = this.value">
+                    <button class="btn-del-row" onclick="tempMemories.splice(${i},1); renderTempLists();">X</button>
                 </div>
             `).join('');
         }
 
-        function addAdminColorRow() { tempColors.push({name:"", hex:"#000000", img:""}); renderTempLists(); }
-        function removeTempC(i) { tempColors.splice(i,1); renderTempLists(); }
-        function updateTempC(i, key, val) { tempColors[i][key] = val; }
-
+        function addAdminColorRow() { tempColors.push({name:"", hex:"#10b981", img:""}); renderTempLists(); }
         function addAdminMemoryRow() { tempMemories.push({size:"", price:""}); renderTempLists(); }
-        function removeTempM(i) { tempMemories.splice(i,1); renderTempLists(); }
-        function updateTempM(i, key, val) { tempMemories[i][key] = val; }
 
         function saveAdminProduct() {
             let id = document.getElementById('ap-id').value;
@@ -1029,37 +1114,40 @@
             let cat = document.getElementById('ap-cat').value;
             let simsRaw = document.getElementById('ap-sims').value;
             
-            if(!name) return showToast("⚠️ Укажите название");
+            if(!name) return showToast("⚠️ Заполните наименование");
             
-            let validColors = tempColors.filter(c => c.name.trim() !== "");
-            let validMemories = tempMemories.filter(m => m.size.trim() !== "" && m.price !== "");
-            let sims = simsRaw.split(',').map(s => s.trim()).filter(s => s !== "");
+            let vColors = tempColors.filter(c => c.name.trim() !== "");
+            let vMemories = tempMemories.filter(m => m.size.trim() !== "" && m.price !== "");
+            let sims = simsRaw.split(',').map(s => s.trim()).filter(Boolean);
 
-            if(validMemories.length === 0) return showToast("⚠️ Добавьте минимум одну конфигурацию (память + цена)");
+            if(vMemories.length === 0) return showToast("⚠️ Добавьте конфигурацию памяти и цены");
 
             let obj = {
-                id: id ? id : "ph_" + Date.now(),
-                name: name, cat: cat, colors: validColors, memories: validMemories, sims: sims
+                id: id ? id : "prod_" + Date.now(),
+                name: name, cat: cat, colors: vColors, memories: vMemories, sims: sims
             };
 
-            if(id) { let idx = products.findIndex(p => p.id === id); products[idx] = obj; } 
-            else { products.push(obj); }
+            if(id) {
+                let idx = products.findIndex(p => p.id === id); products[idx] = obj;
+            } else { products.push(obj); }
             
-            saveToCloud(); closeModal('modal-product'); renderAdminProducts(); showToast("✅ Устройство сохранено");
+            saveToCloud(); closeModal('modal-product'); renderAdminProducts(); showToast("✅ Изменения зафиксированы в облаке");
         }
 
         function deleteAdminProduct() {
-            if(confirm("❗ Вы уверены, что хотите удалить устройство из базы?")) {
+            if(confirm("Удалить модель окончательно?")) {
                 let id = document.getElementById('ap-id').value;
                 products = products.filter(p => p.id !== id);
                 saveToCloud(); closeModal('modal-product'); renderAdminProducts();
             }
         }
 
-        // ЗАПУСК
-        renderCategoriesUI();
-        renderCatalog();
-
+        // ИНИЦИАЛИЗАЦИЯ
+        document.addEventListener("DOMContentLoaded", () => {
+            renderCategories();
+            renderCatalog();
+            initFirebase();
+        });
     </script>
 </body>
 </html>
